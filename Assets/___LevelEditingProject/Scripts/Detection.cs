@@ -13,7 +13,6 @@ public class Detection : MonoBehaviour
 
     void Update()
     {
-        //Vector3 Enemyforward = transform.forward;
         distToPlayer = Vector3.Distance(transform.position,  player.position);
         angle = Vector3.Angle(transform.forward, (player.position - transform.position));
         if ((angle < fov) && (distToPlayer < inRange) && !playerdetected)
