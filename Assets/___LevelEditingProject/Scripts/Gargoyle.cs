@@ -8,9 +8,12 @@ public class Gargoyle : MonoBehaviour
     [Range(0.1f, 3f)]
     float detectionRadius = 3f;
     [SerializeField]
+    [Range(10f, 180f)]
     float detectionAngle = 45f;
     [SerializeField]
+    [Range(10, 180f)]
     float rotationAngle = 30f;
+    Light light;
 
     float timer = 5;
     Material playerMat;
@@ -22,15 +25,14 @@ public class Gargoyle : MonoBehaviour
 
     void Start()
     {
-        if (player != null)
-        {
-            playerMat = player.GetComponent<MeshRenderer>().material;
-        }
+        playerMat = player.GetComponent<MeshRenderer>().material;
+        light = transform.GetComponentInChildren<Light>();
     }
 
     void Update()
     {
-
+        light.spotAngle = detectionAngle;
+        light.range = detectionRadius;
         dist = Vector3.Distance(transform.position, player.position);
         if (dist < detectionRadius)
         {
@@ -41,13 +43,16 @@ public class Gargoyle : MonoBehaviour
             if (angle < detectionAngle / 2)
             {
                 playerMat.color = Color.red;
+                // TODO: Payer is dead here...
             }
+            // TODO: else block To be removed
             else
             {
                 playerMat.color = Color.white;
             }
 
         }
+        // TODO: else block To be removed
         else
         {
             playerMat.color = Color.white;
@@ -61,6 +66,7 @@ public class Gargoyle : MonoBehaviour
         else
         {
             timer = Random.Range(0.3f, 10);
+            //rotationAngle = Random.Range(-180, 180);
             rotationAngle *= -1;
         }
     }
