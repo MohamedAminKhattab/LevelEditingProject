@@ -5,15 +5,21 @@ public class Gargoyle : MonoBehaviour
     [SerializeField]
     Transform player;
     [SerializeField]
+    [Range(0.1f, 3f)]
     float detectionRadius = 3f;
     [SerializeField]
     float detectionAngle = 45f;
+    [SerializeField]
+    float rotationAngle = 30f;
+
+    float timer = 5;
     Material playerMat;
 
     Vector3 dirToPlayer;
     float dist;
     float dotValue;
     float angle;
+
     void Start()
     {
         if (player != null)
@@ -47,5 +53,15 @@ public class Gargoyle : MonoBehaviour
             playerMat.color = Color.white;
         }
 
+        if (timer > 0)
+        {
+            transform.Rotate(0, rotationAngle * Time.deltaTime, 0);
+            timer -= Time.deltaTime;
+        }
+        else
+        {
+            timer = Random.Range(0.3f, 10);
+            rotationAngle *= -1;
+        }
     }
 }
