@@ -16,11 +16,11 @@ public class PathFollowing : SteerBehavior
 
     protected override void SetDestination()
     {
-        target = getpath();
+        target = GetPath();
         agent.SetDestination(target);
     }
 
-    Vector3 getpath()
+    Vector3 GetPath()
     {
         if (target == null)
         {
