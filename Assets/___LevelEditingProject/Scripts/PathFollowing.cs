@@ -26,10 +26,15 @@ public class PathFollowing : SteerBehavior
         {
             (index, target) = path.GetNearestChild(transform.position);
         }
-        else if (Vector3.Distance(transform.position, target) < inRange)
+        else if (Vector3.Distance(transform.position, target) < inRange||target==Vector3.zero)
         {
             (index, target) = path.GetNextChild(index);
         }
         return target;
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(target, 0.5f);
+        Gizmos.color = Color.red;
     }
 }

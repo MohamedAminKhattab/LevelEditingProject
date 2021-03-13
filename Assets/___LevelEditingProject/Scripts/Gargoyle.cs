@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Gargoyle : MonoBehaviour
 {
@@ -13,10 +14,10 @@ public class Gargoyle : MonoBehaviour
     [SerializeField]
     [Range(10, 180f)]
     float rotationAngle = 30f;
-    [SerializeField]Light light;
+    [SerializeField] Light light;
 
     float timer = 5;
-    Material playerMat;
+    //Material playerMat;
 
     Vector3 dirToPlayer;
     float dist;
@@ -25,7 +26,7 @@ public class Gargoyle : MonoBehaviour
 
     void Start()
     {
-        playerMat = player.GetComponent<SkinnedMeshRenderer>().material;
+        //playerMat = player.GetComponent<SkinnedMeshRenderer>().material;
         light = transform.GetComponentInChildren<Light>();
     }
 
@@ -34,30 +35,6 @@ public class Gargoyle : MonoBehaviour
         light.spotAngle = detectionAngle;
         light.range = detectionRadius;
         dist = Vector3.Distance(transform.position, player.position);
-        if (dist < detectionRadius)
-        {
-            dirToPlayer = (player.position - transform.position).normalized;
-            dotValue = Vector3.Dot(dirToPlayer, transform.forward);
-
-            angle = Mathf.Acos(dotValue) * Mathf.Rad2Deg;
-            if (angle < detectionAngle / 2)
-            {
-                playerMat.color = Color.red;
-                // TODO: Payer is dead here...
-            }
-            // TODO: else block To be removed
-            else
-            {
-                playerMat.color = Color.white;
-            }
-
-        }
-        // TODO: else block To be removed
-        else
-        {
-            playerMat.color = Color.white;
-        }
-
         if (timer > 0)
         {
             transform.Rotate(0, rotationAngle * Time.deltaTime, 0);
@@ -69,5 +46,28 @@ public class Gargoyle : MonoBehaviour
             //rotationAngle = Random.Range(-180, 180);
             rotationAngle *= -1;
         }
+        if (dist < detectionRadius)
+        {
+            dirToPlayer = (player.position - transform.position).normalized;
+            dotValue = Vector3.Dot(dirToPlayer, transform.forward);
+
+            angle = Mathf.Acos(dotValue) * Mathf.Rad2Deg;
+            if (angle < detectionAngle / 2)
+            {
+                //playerMat.color = Color.red;
+                SceneManager.LoadScene(0);
+                // TODO: Payer is dead here...
+            }
+            // TODO: else block To be removed
+            //else
+            //{
+            //    playerMat.color = Color.white;
+            //}
+        }
+        // TODO: else block To be removed
+        //else
+        //{
+        //    playerMat.color = Color.white;
+        //}
     }
 }
