@@ -404,9 +404,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerdetected: 0
   fov: 60
-  player: {fileID: 0}
+  player: {fileID: 4078037315563518527, guid: 54cfd84a1d7d16c4ab6ca3098482e6f6, type: 3}
   inRange: 5
-  light: {fileID: 0}
+  light: {fileID: 8410714662672374620}
 --- !u!114 &553095095766212421
 MonoBehaviour:
   m_ObjectHideFlags: 0

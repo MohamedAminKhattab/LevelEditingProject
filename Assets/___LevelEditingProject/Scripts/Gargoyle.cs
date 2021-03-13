@@ -13,7 +13,7 @@ public class Gargoyle : MonoBehaviour
     [SerializeField]
     [Range(10, 180f)]
     float rotationAngle = 30f;
-    Light light;
+    [SerializeField]Light light;
 
     float timer = 5;
     Material playerMat;
@@ -25,7 +25,7 @@ public class Gargoyle : MonoBehaviour
 
     void Start()
     {
-        playerMat = player.GetComponent<MeshRenderer>().material;
+        playerMat = player.GetComponent<SkinnedMeshRenderer>().material;
         light = transform.GetComponentInChildren<Light>();
     }
 
