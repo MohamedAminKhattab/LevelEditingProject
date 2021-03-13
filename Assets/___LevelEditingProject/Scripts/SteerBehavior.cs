@@ -19,9 +19,7 @@ public abstract class SteerBehavior : MonoBehaviour
 
     protected virtual void Update()
     {
-        anim.SetFloat("Speed", agent.velocity.magnitude);
-        NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 0, -1);
-
+        anim.SetFloat("Speed", (float)agent.velocity.magnitude);
         if (behaviorEnabled)
         {
             SetDestination();
