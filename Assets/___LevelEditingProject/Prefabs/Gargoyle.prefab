@@ -246,3 +246,4 @@ MonoBehaviour:
   detectionRadius: 1.8
   detectionAngle: 145
   rotationAngle: 60
+  light: {fileID: 640699145}
