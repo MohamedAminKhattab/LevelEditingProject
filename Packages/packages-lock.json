@@ -53,7 +53,6 @@
       },
       "url": "https://packages.unity.com"
     },
-<<<<<<< HEAD
     "com.unity.probuilder": {
       "version": "4.5.0",
       "depth": 0,
@@ -70,8 +69,6 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-=======
->>>>>>> origin/lights
     "com.unity.sysroot": {
       "version": "0.1.19-preview",
       "depth": 1,
