@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         horizontal = Input.GetAxis("Horizontal");
         verical = Input.GetAxis("Vertical");
 
