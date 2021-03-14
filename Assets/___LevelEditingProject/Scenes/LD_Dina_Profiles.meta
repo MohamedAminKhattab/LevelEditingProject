@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 3ce14a4ad1b69d14b8f6350f6d03367e
+=======
+guid: 10c3a99f2bd434f4db23d659ae91c87c
+>>>>>>> origin/lights
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
