@@ -1,6 +1,8 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,6 +10,8 @@ public class PlayerController : MonoBehaviour
     float playerSpeed;
     [SerializeField]
     float rotaionSpeed;
+    [SerializeField] PlayableDirector playableDirector;
+    [SerializeField] GameObject dolyCart;
 
     Animator playerAnimator;
     float horizontal;
@@ -17,11 +21,15 @@ public class PlayerController : MonoBehaviour
 
     bool isMoving;
     CharacterController characterController;
+
+    
+
     // Start is called before the first frame update
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
+        
     }
 
     // Update is called once per frame
@@ -45,12 +53,18 @@ public class PlayerController : MonoBehaviour
 
 
     }
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Winzone"))
         {
             //todo cinemachine flyover
             Debug.Log("won");
+            dolyCart.GetComponent<CinemachineDollyCart>().m_Speed = 2;
+
+
+            playableDirector.Play();
+            
+
         }
     }
 }
