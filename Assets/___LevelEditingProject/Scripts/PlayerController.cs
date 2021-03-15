@@ -22,14 +22,14 @@ public class PlayerController : MonoBehaviour
     bool isMoving;
     CharacterController characterController;
 
-    
+
 
     // Start is called before the first frame update
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
-        
+
     }
 
     // Update is called once per frame
@@ -39,12 +39,12 @@ public class PlayerController : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal");
         verical = Input.GetAxis("Vertical");
 
-        Vector3 move = new Vector3(0, 0, verical) ;
-        Vector3 rotation = new Vector3(0, horizontal,0 );
+        Vector3 move = new Vector3(0, 0, verical);
+        Vector3 rotation = new Vector3(0, horizontal, 0);
 
         move = characterController.transform.TransformDirection(move);
-        characterController.Move(move * Time.deltaTime * playerSpeed );
-        characterController.transform.Rotate( rotation * rotaionSpeed * Time.deltaTime);
+        characterController.Move(move * Time.deltaTime * playerSpeed);
+        characterController.transform.Rotate(rotation * rotaionSpeed * Time.deltaTime);
 
         isMoving = horizontal != 0 || verical != 0;
         playerAnimator.SetBool("IsWalking", isMoving);
@@ -54,18 +54,15 @@ public class PlayerController : MonoBehaviour
 
 
     }
-    public void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if(other.CompareTag("Winzone"))
+        Debug.Log("collision");
+        if (collision.gameObject.CompareTag("Winzone"))
         {
             //todo cinemachine flyover
             Debug.Log("won");
             dolyCart.GetComponent<CinemachineDollyCart>().m_Speed = 2;
-
-
             playableDirector.Play();
-            
-
         }
     }
 }
