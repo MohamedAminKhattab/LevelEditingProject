@@ -61,6 +61,16 @@ public class PlayerController : MonoBehaviour
         {
             //todo cinemachine flyover
             Debug.Log("won");
+
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("trigger");
+        if (other.CompareTag("Winzone"))
+        {
+            //todo cinemachine flyover
+            Debug.Log("won");
             dolyCart.GetComponent<CinemachineDollyCart>().m_Speed = 2;
             playableDirector.Play();
         }
